@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Placibo – Learn Cybersecurity, Data Science & SRE with AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F6FC;--surface:#fff;--ink:#16193F;--muted:#555B82;--line:#DCE1F2;--violet:#5B3DF5;--coral:#FF6A55;--mint:#0E9F7E;--lab:#16193F;--labtxt:#E8EBFF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1127;--surface:#181B3D;--ink:#EEF0FF;--muted:#A5ABD6;--line:#2A2E5E;--violet:#8D78FF;--coral:#FF8470;--mint:#35D1AC;--lab:#090A1C;}}
+:root[data-theme="dark"]{--bg:#0F1127;--surface:#181B3D;--ink:#EEF0FF;--muted:#A5ABD6;--line:#2A2E5E;--violet:#8D78FF;--coral:#FF8470;--mint:#35D1AC;--lab:#090A1C}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:800 24px "Bricolage Grotesque",sans-serif;text-decoration:none}
+.logo i{font-style:normal;color:var(--coral)}
+nav{display:flex;gap:26px;align-items:center;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}
+.btn{display:inline-block;background:var(--violet);color:#fff;padding:13px 24px;border-radius:12px;font-weight:500;text-decoration:none;border:0;cursor:pointer;font-size:16px;font-family:inherit}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn:focus-visible,.tab:focus-visible,a:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.hero{padding:64px 0 40px;display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center}
+.hero h1{font-size:clamp(40px,6vw,72px);font-weight:800}
+.hero p{color:var(--muted);font-size:19px;max-width:30em;margin:22px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.lab{background:var(--lab);color:var(--labtxt);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px -24px rgba(91,61,245,.55)}
+.tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.12)}
+.tab{flex:1;background:none;border:0;color:#9AA1D6;padding:14px 8px;font:500 14px "IBM Plex Sans",sans-serif;cursor:pointer;border-bottom:3px solid transparent}
+.tab[aria-selected="true"]{color:#fff;border-bottom-color:var(--coral)}
+.screen{padding:20px;min-height:290px;font:14px/1.7 ui-monospace,"SFMono-Regular",Menlo,monospace}
+.screen .row{display:flex;gap:10px}
+.ok{color:#4FE3BE}.warn{color:#FFB86B}.bad{color:#FF8A78}.dim{color:#8A91C9}
+.ai{margin-top:14px;padding:12px 14px;border-radius:10px;background:rgba(141,120,255,.18);border:1px solid rgba(141,120,255,.45);font-family:"IBM Plex Sans",sans-serif;font-size:14px}
+.bars{display:flex;align-items:flex-end;gap:6px;height:80px;margin:8px 0}
+.bars span{flex:1;background:linear-gradient(var(--violet),#8D78FF);border-radius:4px 4px 0 0}
+section{padding:72px 0}
+h2{font-size:clamp(30px,4vw,46px);font-weight:700;max-width:16em}
+.lead{color:var(--muted);max-width:36em;margin:14px 0 36px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px}
+.card h3{font-size:23px;margin-bottom:10px}
+.card p{margin:0 0 14px;color:var(--muted);font-size:16px}
+.card ul{margin:0;padding-left:18px;font-size:15px}
+.card.t1{border-top:5px solid var(--coral)}.card.t2{border-top:5px solid var(--violet)}.card.t3{border-top:5px solid var(--mint)}
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.ai-list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 40px}
+.ai-list div{padding-left:18px;border-left:3px solid var(--violet)}
+.ai-list b{font-family:"Bricolage Grotesque",sans-serif;font-size:20px;display:block}
+.ai-list span{color:var(--muted);font-size:16px}
+.path{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s;margin-top:10px}
+.step{padding:22px 20px 0 0;border-top:3px solid var(--line);position:relative}
+.step::before{counter-increment:s;content:"Week " counter(s);font-weight:500;color:var(--violet);font-size:14px}
+.step h3{font-size:20px;margin:6px 0}
+.step p{color:var(--muted);font-size:15px;margin:0}
+.final{background:var(--violet);color:#fff;border-radius:22px;padding:56px 36px;text-align:center}
+.final h2{margin:0 auto;color:#fff}
+.final p{margin:14px auto 26px;max-width:32em;opacity:.9}
+.final .btn{background:#fff;color:#16193F}
+footer{padding:32px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line);margin-top:72px}
+@media(max-width:860px){.hero,.grid3,.ai-list,.path{grid-template-columns:1fr}nav a:not(.btn){display:none}.step{padding-bottom:18px}.hero{padding-top:36px}}
+@media(prefers-reduced-motion:no-preference){.caret{animation:b 1s steps(2) infinite}@keyframes b{50%{opacity:0}}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="logo" href="#top">placibo<i>.</i></a>
+<nav><a href="#tracks">Tracks</a><a href="#ai">AI in class</a><a href="#path">Learning path</a><a class="btn" href="#join">Join a batch</a></nav>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+<div>
+<h1>Train on real incidents, not slides.</h1>
+<p>Placibo trains students in Cybersecurity, Data Science and Site Reliability Engineering. Every course is built around hands-on labs with AI copilots, the way modern teams work.</p>
+<div class="cta"><a class="btn" href="#join">Reserve your seat</a><a class="btn ghost" href="#tracks">Explore tracks</a></div>
+</div>
+
+<div class="lab" aria-label="Interactive preview of a Placibo lab">
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" aria-selected="true" data-k="sec">Cybersecurity</button>
+<button class="tab" role="tab" aria-selected="false" data-k="ds">Data Science</button>
+<button class="tab" role="tab" aria-selected="false" data-k="sre">SRE</button>
+</div>
+<div class="screen" id="screen" aria-live="polite"></div>
+</div>
+</div>
+
+<section id="tracks" style="padding-top:40px">
+<div class="wrap">
+<h2>Three tracks. One goal: get you job-ready.</h2>
+<p class="lead">Pick the path that fits you. Each track ends with a capstone you can show to employers.</p>
+<div class="grid3">
+<div class="card t1"><h3>Cybersecurity</h3><p>Defend systems, hunt threats and respond to attacks in a safe practice environment.</p>
+<ul><li>Network and web security basics</li><li>Ethical hacking labs</li><li>SOC analysis and incident response</li><li>AI-assisted threat detection</li></ul></div>
+<div class="card t2"><h3>Data Science</h3><p>Turn raw data into models and decisions, from Python to production.</p>
+<ul><li>Python, SQL and statistics</li><li>Machine learning projects</li><li>Generative AI and LLM apps</li><li>Dashboards and storytelling</li></ul></div>
+<div class="card t3"><h3>Site Reliability Engineering</h3><p>Keep services fast and available with automation, monitoring and calm on-call habits.</p>
+<ul><li>Linux, Docker and Kubernetes</li><li>CI/CD and infrastructure as code</li><li>Observability and SLOs</li><li>AIOps and incident drills</li></ul></div>
+</div>
+</div>
+</section>
+
+<section id="ai" class="band">
+<div class="wrap">
+<h2>AI is part of every class, not an add-on.</h2>
+<p class="lead">You will learn to use today's AI tools well, and to know when not to trust them.</p>
+<div class="ai-list">
+<div><b>AI pair-programming</b><span>Write, review and debug code with coding assistants.</span></div>
+<div><b>LLM-powered security analysis</b><span>Summarize alerts, explain logs and draft incident reports.</span></div>
+<div><b>Build your own AI apps</b><span>Create RAG chatbots and prediction models on real datasets.</span></div>
+<div><b>AIOps and auto-remediation</b><span>Detect anomalies and automate fixes in live-like systems.</span></div>
+</div>
+</div>
+</section>
+
+<section id="path">
+<div class="wrap">
+<h2>How a batch runs</h2>
+<p class="lead">A clear weekly rhythm, so you always know what to do next.</p>
+<div class="path">
+<div class="step"><h3>Foundations</h3><p>Core tools, concepts and your lab setup.</p></div>
+<div class="step"><h3>Guided labs</h3><p>Live sessions with mentors and AI copilots.</p></div>
+<div class="step"><h3>Real scenarios</h3><p>Breach, outage and data-drift drills.</p></div>
+<div class="step"><h3>Capstone and placement prep</h3><p>Portfolio project, resume and mock interviews.</p></div>
+</div>
+</div>
+</section>
+
+<section id="join" style="padding-top:0">
+<div class="wrap"><div class="final">
+<h2>Your next batch is forming.</h2>
+<p>Tell us which track you want and we will share the schedule, syllabus and fees.</p>
+<a class="btn" href="https://www.placibo.in/">Talk to our team</a>
+</div></div>
+</section>
+</main>
+<footer><div class="wrap">© Placibo. Design your future.</div></footer>
+
+<script>
+const D={
+sec:`<div class="dim">$ soc-console --live</div>
+<div><span class="bad">HIGH</span> 03:12 Impossible-travel login for admin@corp</div>
+<div><span class="warn">MED&nbsp;</span> 03:14 Unusual PowerShell on HR-LAPTOP-07</div>
+<div><span class="ok">LOW&nbsp;</span> 03:15 Port scan from known scanner</div>
+<div class="ai"><b>AI copilot:</b> The first two alerts share one account. Likely credential theft. Suggested step: disable the session and reset the password. <span class="dim">Your job: verify it.</span></div>`,
+ds:`<div class="dim">$ train churn_model.py</div>
+<div>Accuracy by epoch</div>
+<div class="bars"><span style="height:35%"></span><span style="height:52%"></span><span style="height:66%"></span><span style="height:78%"></span><span style="height:86%"></span><span style="height:91%"></span></div>
+<div><span class="warn">WARN</span> Feature "tenure" leaks the label</div>
+<div class="ai"><b>AI copilot:</b> Validation score looks too good. Remove "tenure" and re-run. <span class="dim">Your job: explain why.</span></div>`,
+sre:`<div class="dim">$ kubectl get slo checkout-api</div>
+<div>Error budget left: <span class="bad">12%</span></div>
+<div>p99 latency: <span class="warn">1.8s</span> (target 400ms)</div>
+<div>Deploy v142 · 14 min ago</div>
+<div class="ai"><b>AI copilot:</b> Latency began right after v142. Recommend rollback, then review the new DB query. <span class="dim">Your job: decide and write the postmortem.</span></div>`};
+const s=document.getElementById('screen');
+function show(k){s.innerHTML=D[k]+'<div class="dim">$ <span class="caret">▍</span></div>';
+document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.k===k))}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>show(t.dataset.k)));
+show('sec');
+</script>
+</body>
+</html>
